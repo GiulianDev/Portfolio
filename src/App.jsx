@@ -7,22 +7,27 @@ import { ContactFeature } from './features/contact/ContactFeature';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-[#03050a] text-neutral-200 font-sans antialiased selection:bg-blue-500 selection:text-white">
-      
-      {/* ─── NUOVE LUCI GLOBALI (Tema Cosmic: Blue/Purple/Indigo) ─── */}
+    <div className="relative min-h-screen bg-[#020617] text-neutral-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">        
+      {/* ─── LUCI FLUTTUANTI (Effetto Azzurro Elettrico / Tech) ─── */}
       <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         
-        {/* Luce Blu Brillante in alto a sinistra */}
-        <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/15 rounded-full blur-[120px] mix-blend-screen" />
+        {/* 1. Azzurro Elettrico in alto a sinistra */}
+        <div 
+          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/20 rounded-full blur-[130px] mix-blend-screen animate-blob" 
+          style={{ animationDelay: '0s' }}
+        />
         
-        {/* Luce Viola Profondo centrale/destra */}
-        <div className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-purple-600/15 rounded-full blur-[130px] mix-blend-screen animate-pulse duration-10000" />
+        {/* 2. Ciano (Neon) centrale per i punti di massima luce */}
+        <div 
+          className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] bg-cyan-500/15 rounded-full blur-[120px] mix-blend-screen animate-blob" 
+          style={{ animationDelay: '2s' }}
+        />
         
-        {/* Luce Indaco in basso a sinistra (accompagna lo scroll verso i contatti) */}
-        <div className="absolute bottom-[-10%] left-[10%] w-[60vw] h-[60vw] bg-indigo-600/10 rounded-full blur-[140px] mix-blend-screen" />
-        
-        {/* Un tocco di Ciano (Azzurro chiaro) tenue per dare contrasto freddo */}
-        <div className="absolute top-[60%] right-[20%] w-[40vw] h-[40vw] bg-cyan-500/10 rounded-full blur-[120px] mix-blend-screen" />
+        {/* 3. Indaco profondo in basso (dà peso allo sfondo senza fare troppa luce) */}
+        <div 
+          className="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-indigo-600/15 rounded-full blur-[140px] mix-blend-screen animate-blob" 
+          style={{ animationDelay: '4s' }}
+        />
         
       </div>
 
