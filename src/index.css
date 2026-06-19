@@ -1,93 +1,32 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0a0a0a;
+  }
+  
   body {
-    /* Sfondo scuro profondo e uniforme per tutto lo schermo */
-    background-color: #0d0d0d;
-    color: #f3f4f6;
-    -webkit-font-smoothing: antialiased;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
-/* Centriamo e personalizziamo le frecce di navigazione Swiper */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
-  width: 50px !important;
-  height: 50px !important;
+/* Scrollbar minimale e discreta che appare solo se serve */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
-  transition: all 0.2s ease;
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-  transform: scale(1.1);
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 20px !important;
-  font-weight: bold;
-}
-
-/* --- CUSTOM SWIPER PAGINATION (Effetto Pillola Moderno) --- */
-
-/* Stile per i pallini inattivi */
-.swiper-pagination-bullet {
-  width: 8px !important;
-  height: 8px !important;
-  background-color: rgba(255, 255, 255, 0.4) !important; 
-  opacity: 1 !important; 
-  border-radius: 50% !important;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; 
-}
-
-/* Stile per il pallino attivo (selezionato) */
-.swiper-pagination-bullet-active {
-  width: 24px !important; 
-  background-color: #ffffff !important; 
-  border-radius: 8px !important; 
-}
-
-/* Opzionale: spostiamo leggermente la paginazione */
-.swiper-pagination-bottom {
-  bottom: 0px !important; 
-}
-
-/* --- CUSTOM SCROLLBAR ELEGANTE (Stile Moderno/Netflix) --- */
-
-/* 1. Assegniamo una larghezza minima alla barra */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-/* 2. Lo sfondo del binario (track) della scrollbar - lo teniamo invisibile o quasi */
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 10px;
-}
-
-/* 3. La barra che si muove (thumb) */
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15); 
-  border-radius: 10px;
-  transition: background 0.2s ease;
-}
-
-/* 4. Effetto al passaggio del mouse sulla barra */
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3); 
-}
-
-/* Supporto per Firefox (che usa una sintassi diversa e più limitata) */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.02);
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
