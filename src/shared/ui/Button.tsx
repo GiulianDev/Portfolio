@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   target?: string;
   rel?: string;
-  className?: string; // Permette di sovrascrivere o aggiungere classi (es: w-full su mobile)
+  className?: string;
 }
 
 export function Button({
@@ -20,14 +20,19 @@ export function Button({
   ...props
 }: ButtonProps) {
   
-  // Stili base applicati a tutti i bottoni
-  const baseStyles = "inline-flex items-center justify-center text-sm font-bold px-6 py-3.5 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/20";
+  // Stili base: arrotondamento più estremo (rounded-2xl invece di xl) per seguire il minimalismo delle card
+  const baseStyles = "inline-flex items-center justify-center text-sm font-semibold px-6 py-3.5 rounded-2xl transition-all duration-400 ease-out focus:outline-none focus:ring-2 focus:ring-white/20";
   
-  // Stili specifici per ogni variante
+  // Stili specifici aggiornati alla nuova palette Elettrica
   const variants = {
-    primary: "group relative bg-white text-black hover:bg-neutral-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/10 overflow-hidden",
-    outline: "bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-white hover:-translate-y-0.5",
-    accent: "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5"
+    // Primary: Ora è un bianco leggermente opaco (glassy) con testo scuro per non accecare l'utente
+    primary: "group relative bg-white/90 backdrop-blur-md text-slate-900 hover:bg-white hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,255,255,0.15)] overflow-hidden",
+    
+    // Outline: Reso ancora più etereo e sottile
+    outline: "bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 hover:border-white/15 text-neutral-300 hover:text-white hover:-translate-y-1",
+    
+    // Accent: Aggiornato al Blu/Indaco con un bagliore (glow) molto tech
+    accent: "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_30px_rgba(79,70,229,0.5)] border border-white/10 hover:-translate-y-1"
   };
 
   const combinedClasses = `${baseStyles} ${variants[variant]} ${className}`;
@@ -36,9 +41,8 @@ export function Button({
   if (href) {
     return (
       <a href={href} target={target} rel={rel} className={combinedClasses}>
-        {/* Micro-animazione di luce interna solo per il bottone primario */}
         {variant === 'primary' && (
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_ease-in-out]" />
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-x-[150%] group-hover:animate-[shimmer_1.5s_ease-in-out]" />
         )}
         <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
       </a>
@@ -49,7 +53,7 @@ export function Button({
   return (
     <button className={combinedClasses} {...props}>
       {variant === 'primary' && (
-        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_ease-in-out]" />
+        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-x-[150%] group-hover:animate-[shimmer_1.5s_ease-in-out]" />
       )}
       <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
     </button>

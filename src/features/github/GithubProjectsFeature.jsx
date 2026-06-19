@@ -12,13 +12,13 @@ export function GithubProjectsFeature() {
       {/* ─── INTESTAZIONE DELLA SEZIONE ─── */}
       <div className="flex flex-col">
        
-       {/* Badge Smeraldo (Es. per i progetti GitHub) */}
-        <MinimalBadge dotClass="bg-emerald-500 shadow-emerald-500/50">
+       {/* Badge aggiornato ai toni Indaco/Blu */}
+        <MinimalBadge dotClass="bg-indigo-500 shadow-indigo-500/50">
           Open Source & Repository
         </MinimalBadge>
         
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black mt-4 tracking-tight text-white leading-none">
-          Codice in <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">Movimento.</span>
+          Codice in <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400">Movimento.</span>
         </h2>
         
         <p className="text-neutral-400 text-base sm:text-lg mt-4 max-w-2xl leading-relaxed">
@@ -31,7 +31,7 @@ export function GithubProjectsFeature() {
         
         {loading && (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
-            <div className="w-6 h-6 border-2 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"></div>
+            <div className="w-6 h-6 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
             <p className="text-neutral-500 text-sm font-medium">Sincronizzazione con GitHub...</p>
           </div>
         )}
@@ -42,9 +42,9 @@ export function GithubProjectsFeature() {
           </div>
         )}
 
-        {/* Mappiamo l'array usando la nostra nuova componente condivisa! */}
+        {/* Mappiamo l'array usando la nuova ProjectCard minimale */}
         {!loading && !error && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {projects?.map((repo) => (
               <ProjectCard
                 key={repo.id}
