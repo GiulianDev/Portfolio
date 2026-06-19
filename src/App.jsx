@@ -21,18 +21,19 @@ function App() {
       <main className="w-full flex-grow flex items-center my-4">
         <Swiper
           modules={[Navigation, Mousewheel, Keyboard]}
-          centeredSlides={true} // FORZA la slide attiva sempre al centro
+          centeredSlides={true}
           grabCursor={true}
           navigation={true}
           mousewheel={true}
           keyboard={true}
-          // Spaziatura dinamica: valori decimali per far sbucare le card ai lati
+          // Modifica qui: valori più vicini a 1 rendono la card centrale più grande
           breakpoints={{
-            0: { slidesPerView: 1.15, spaceBetween: 15 },    // Su mobile: 1 card + 15% visibile diviso sui lati
-            768: { slidesPerView: 1.5, spaceBetween: 30 },   // Su tablet: 1 card + mezza divisa sui lati
-            1024: { slidesPerView: 1.6, spaceBetween: 40 },  // Su desktop grande: Card immensa al centro, bordi visibili
+            0: { slidesPerView: 1.05, spaceBetween: 20 },   // Quasi a tutto schermo su mobile
+            768: { slidesPerView: 1.25, spaceBetween: 40 },  // Molto più grande su tablet
+            1024: { slidesPerView: 1.3, spaceBetween: 60 },  // Ampia su desktop
           }}
-          className="w-full h-[85vh] md:h-[80vh] py-8"
+          // Aumentiamo l'altezza base della sezione (h-[75vh] o superiore)
+          className="w-full h-[80vh] md:h-[80vh] py-10"
         >
           {/* SwiperSlide espone isActive come funzione (Render Prop), lo catturiamo e lo passiamo alla Feature */}
           <SwiperSlide className="h-full">

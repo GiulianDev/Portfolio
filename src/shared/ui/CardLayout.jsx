@@ -4,9 +4,8 @@ import React from 'react';
 export function CardLayout({ children, gradientColor, watermarkNumber, isActive }) {
   return (
     <div 
-      // Tailwind gestirà l'animazione di transizione (transition-all duration-500)
-      className={`w-full h-full bg-gradient-to-br ${gradientColor} p-8 md:p-12 flex flex-col relative overflow-hidden select-none rounded-2xl shadow-2xl transition-all duration-500 ease-out
-      ${isActive ? 'scale-100 opacity-100 z-10' : 'scale-90 opacity-40 z-0 cursor-pointer'}`}
+      className={`w-full h-full bg-gradient-to-br ${gradientColor} p-10 md:p-16 flex flex-col relative overflow-hidden select-none rounded-3xl shadow-2xl transition-all duration-700 ease-out 
+      ${isActive ? 'scale-100 opacity-100 z-10' : 'scale-90 opacity-40 blur-[2px] z-0'}`}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_45%)] pointer-events-none" />
       
