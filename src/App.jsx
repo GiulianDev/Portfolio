@@ -7,13 +7,23 @@ import { ContactFeature } from './features/contact/ContactFeature';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-[#0f141c] text-neutral-200 font-sans antialiased selection:bg-emerald-500 selection:text-black">
+    <div className="relative min-h-screen bg-[#03050a] text-neutral-200 font-sans antialiased selection:bg-blue-500 selection:text-white">
       
-      {/* ─── LUCI GLOBALI DI SFONDO (Unificano il tema) ─── */}
+      {/* ─── NUOVE LUCI GLOBALI (Tema Cosmic: Blue/Purple/Indigo) ─── */}
       <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-500/10 rounded-full blur-[120px]" />
-        <div className="absolute top-[40%] right-[-5%] w-[40vw] h-[40vw] bg-emerald-500/8 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-orange-500/10 rounded-full blur-[120px]" />
+        
+        {/* Luce Blu Brillante in alto a sinistra */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/15 rounded-full blur-[120px] mix-blend-screen" />
+        
+        {/* Luce Viola Profondo centrale/destra */}
+        <div className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-purple-600/15 rounded-full blur-[130px] mix-blend-screen animate-pulse duration-10000" />
+        
+        {/* Luce Indaco in basso a sinistra (accompagna lo scroll verso i contatti) */}
+        <div className="absolute bottom-[-10%] left-[10%] w-[60vw] h-[60vw] bg-indigo-600/10 rounded-full blur-[140px] mix-blend-screen" />
+        
+        {/* Un tocco di Ciano (Azzurro chiaro) tenue per dare contrasto freddo */}
+        <div className="absolute top-[60%] right-[20%] w-[40vw] h-[40vw] bg-cyan-500/10 rounded-full blur-[120px] mix-blend-screen" />
+        
       </div>
 
       {/* ─── FLOATING NAVBAR ─── */}
