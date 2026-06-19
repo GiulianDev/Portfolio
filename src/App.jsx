@@ -57,16 +57,7 @@ function App() {
       </div>
 
       {/* ─── FLOATING NAVBAR ─── */}
-      {/* <a href="#links" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Progetti</a> */}
-      {/* 
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-2.5 flex items-center gap-6 z-50 shadow-xl shadow-black/40">
-        <a href="#intro" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Chi Sono</a>
-        <a href="#github" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">GitHub</a>
-        <a href="#contact" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Contatti</a>
-      </nav> 
-      */}
-
-      <Navbar activeSection={activeSection} />
+      <Navbar id="Navbar" activeSection={activeSection} />
 
 
       {/* Brand Header */}
