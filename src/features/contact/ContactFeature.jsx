@@ -1,10 +1,10 @@
 import React from 'react';
 import { CardLayout } from '../../shared/ui/CardLayout';
 
-export function ContactFeature() {
+export function ContactFeature({ isActive }) {
   // Qui potrai gestire gli state del form (nome, email, messaggio) e l'invio
   return (
-    <CardLayout gradientColor="from-blue-600 to-cyan-700" watermarkNumber="03">
+    <CardLayout gradientColor="from-blue-600 to-cyan-700" watermarkNumber="03" isActive={isActive}>
       <div>
         <h2 className="text-3xl md:text-5xl font-extrabold mt-6 text-white tracking-tight leading-none">
           Lavoriamo Insieme

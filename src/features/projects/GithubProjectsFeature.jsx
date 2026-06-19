@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CardLayout } from '../../shared/ui/CardLayout';
 
-export function GithubProjectsFeature() {
+export function GithubProjectsFeature({ isActive }) {
   // Qui dentro avremo la logica! Nessun'altra card ne sarà influenzata.
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ export function GithubProjectsFeature() {
   }, []);
 
   return (
-    <CardLayout gradientColor="from-emerald-600 to-teal-700" watermarkNumber="02">
+    <CardLayout gradientColor="from-emerald-600 to-teal-700" watermarkNumber="02" isActive={isActive}>
       <div>
         <span className="inline-block bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
           Open Source

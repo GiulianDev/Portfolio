@@ -1,45 +1,54 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel, Keyboard, EffectCreative } from 'swiper/modules';
+import { Navigation, Mousewheel, Keyboard } from 'swiper/modules'; // Rimosso EffectCreative
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/effect-creative';
 
-// Importiamo le feature isolate
 import { IntroFeature } from './features/introduction/IntroFeature';
 import { GithubProjectsFeature } from './features/projects/GithubProjectsFeature';
 import { ContactFeature } from './features/contact/ContactFeature';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col justify-between px-4 md:px-12 py-8 bg-[#0a0a0a]">
-      {/* L'header può stare nel layout condiviso */}
-      <header className="max-w-4xl mx-auto w-full mb-6">
+    <div className="min-h-screen flex flex-col justify-between py-8 bg-[#0a0a0a] overflow-hidden">
+      
+      <header className="max-w-6xl mx-auto w-full px-4 md:px-12 mb-6">
         <h1 className="text-3xl md:text-5xl font-black text-white">Portfolio</h1>
       </header>
 
-      <main className="w-full max-w-4xl mx-auto flex-grow flex items-center justify-center my-4">
+      {/* Il main ora occupa tutta la larghezza (w-full) senza max-width, così le card laterali toccano i bordi */}
+      <main className="w-full flex-grow flex items-center my-4">
         <Swiper
-          modules={[Navigation, Mousewheel, Keyboard, EffectCreative]}
-          effect={'creative'}
+          modules={[Navigation, Mousewheel, Keyboard]}
+          centeredSlides={true} // FORZA la slide attiva sempre al centro
           grabCursor={true}
           navigation={true}
           mousewheel={true}
           keyboard={true}
-          slidesPerView={1}
-          creativeEffect={{
-            prev: { shadow: true, translate: ['-20%', 0, -200], opacity: 0.3 },
-            next: { translate: ['100%', 0, 0] },
+          // Spaziatura dinamica: valori decimali per far sbucare le card ai lati
+          breakpoints={{
+            0: { slidesPerView: 1.15, spaceBetween: 15 },    // Su mobile: 1 card + 15% visibile diviso sui lati
+            768: { slidesPerView: 1.5, spaceBetween: 30 },   // Su tablet: 1 card + mezza divisa sui lati
+            1024: { slidesPerView: 1.6, spaceBetween: 40 },  // Su desktop grande: Card immensa al centro, bordi visibili
           }}
-          className="w-full h-[85vh] md:h-[80vh]"
+          className="w-full h-[85vh] md:h-[80vh] py-8"
         >
-          {/* Mappiamo le feature nelle slide */}
-          <SwiperSlide className="h-full w-full p-2"><IntroFeature /></SwiperSlide>
-          <SwiperSlide className="h-full w-full p-2"><GithubProjectsFeature /></SwiperSlide>
-          <SwiperSlide className="h-full w-full p-2"><ContactFeature /></SwiperSlide>
+          {/* SwiperSlide espone isActive come funzione (Render Prop), lo catturiamo e lo passiamo alla Feature */}
+          <SwiperSlide className="h-full">
+            {({ isActive }) => <IntroFeature isActive={isActive} />}
+          </SwiperSlide>
+          
+          <SwiperSlide className="h-full">
+            {({ isActive }) => <GithubProjectsFeature isActive={isActive} />}
+          </SwiperSlide>
+          
+          <SwiperSlide className="h-full">
+            {({ isActive }) => <ContactFeature isActive={isActive} />}
+          </SwiperSlide>
         </Swiper>
       </main>
+
     </div>
   );
 }
