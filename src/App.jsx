@@ -9,8 +9,9 @@ import 'swiper/css/pagination'; // Nuova importazione CSS per i puntini
 
 // Import delle tue feature
 import { IntroFeature } from './features/introduction/IntroFeature';
-import { GithubProjectsFeature } from './features/projects/GithubProjectsFeature';
+import { GithubProjectsFeature } from './features/github/GithubProjectsFeature';
 import { ContactFeature } from './features/contact/ContactFeature';
+import { LinkFeature } from './features/links/LinkFeature';
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function App() {
           
           <SwiperSlide className="h-full">
             {({ isActive }) => <GithubProjectsFeature isActive={isActive} />}
+          </SwiperSlide>
+
+          <SwiperSlide className="h-full">
+            {({ isActive }) => <LinkFeature isActive={isActive} />}
           </SwiperSlide>
           
           <SwiperSlide className="h-full">
