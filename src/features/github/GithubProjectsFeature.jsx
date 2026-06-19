@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { CardLayout } from '../../shared/ui/CardLayout';
 import { useGithubProjects } from './useGithubProjects';
 
 export function GithubProjectsFeature({ isActive }) {
-  // Sostituisci con il tuo username reale
+  // Recuperiamo i progetti GitHub dal tuo hook custom
   const { projects, loading, error } = useGithubProjects('GiulianDev', 6);
+  
+  // Creiamo un riferimento al contenitore della lista dei progetti
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    const element = scrollContainerRef.current;
+    if (!element) return;
+
+    // Fermiamo l'evento NATIVO del browser sul nascere, prima che raggiunga Swiper
+    const handleNativeWheel = (e) => {
+      e.stopPropagation();
+    };
+
+    // Aggiungiamo il listener nativo del DOM
+    element.addEventListener('wheel', handleNativeWheel, { passive: true });
+    
+    // Pulizia dell'evento quando il componente si smonta
+    return () => {
+      element.removeEventListener('wheel', handleNativeWheel);
+    };
+  }, []);
 
   return (
     <CardLayout gradientColor="from-emerald-600 to-teal-700" watermarkNumber="02" isActive={isActive}>
@@ -19,10 +40,10 @@ export function GithubProjectsFeature({ isActive }) {
         </h2>
       </div>
       
-      {/* LISTA PROGETTI */}
-      <div className="flex-grow mt-8 overflow-y-auto pr-2 custom-scrollbar pb-4"
-        // INTERCETTA LO SCROLL: impedisce a Swiper di cambiare slide se scrolli qui dentro
-        onWheel={(e) => e.stopPropagation()}
+      {/* LISTA PROGETTI CORRETTA */}
+      <div 
+        ref={scrollContainerRef}
+        className="flex-grow mt-8 overflow-y-auto pr-2 custom-scrollbar pb-4 min-h-0 swiper-no-mousewheel swiper-no-swiping"
       >
         {loading && (
           <p className="text-white/70 animate-pulse text-center mt-10">Caricamento repository...</p>
@@ -45,7 +66,7 @@ export function GithubProjectsFeature({ isActive }) {
                     <h3 className="text-xl font-bold text-white tracking-tight truncate">
                       {repo.name}
                     </h3>
-                    {/* Badge del linguaggio principale */}
+                    {/* Badge del linguaggio */}
                     {repo.language && (
                       <span className="text-[10px] bg-white/10 text-white/80 px-2 py-0.5 rounded-md font-medium">
                         {repo.language}
@@ -53,7 +74,7 @@ export function GithubProjectsFeature({ isActive }) {
                     )}
                   </div>
                   
-                  {/* Visualizzazione della descrizione con fallback se null */}
+                  {/* Descrizione con fallback */}
                   <p className="text-white/70 text-sm mt-2 line-clamp-2 min-h-[40px]">
                     {repo.description || 'Nessuna descrizione fornita per questo progetto.'}
                   </p>
@@ -61,7 +82,6 @@ export function GithubProjectsFeature({ isActive }) {
                 
                 {/* Pulsanti di Azione Doppi */}
                 <div className="flex items-center gap-2 mt-6 pt-4 border-t border-white/5">
-                  {/* Link alla Repository (Sempre Presente) */}
                   <a
                     href={repo.html_url}
                     target="_blank"
@@ -71,7 +91,6 @@ export function GithubProjectsFeature({ isActive }) {
                     Codice GitHub
                   </a>
 
-                  {/* Link al sito Live (Mostrato solo se 'homepage' non è null o vuoto) */}
                   {repo.homepage && (
                     <a
                       href={repo.homepage}
