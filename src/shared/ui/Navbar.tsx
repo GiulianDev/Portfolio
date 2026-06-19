@@ -22,14 +22,21 @@ export function Navbar({ activeSection }: NavbarProps) {
             key={item.id}
             href={`#${item.id}`}
             className={`
-              relative px-5 py-2 text-sm font-medium rounded-full transition-all duration-500 ease-out
-              ${isActive 
-                ? 'text-white bg-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_0_20px_rgba(255,255,255,0.1)]' 
-                : 'text-neutral-400 hover:text-white hover:bg-white/5'
-              }
+              relative px-5 py-2 text-sm font-medium rounded-full transition-colors duration-500 ease-out flex items-center justify-center
+              ${isActive ? 'text-white' : 'text-neutral-400 hover:text-white/70'}
             `}
           >
-            {item.label}
+            {/* Effetto luce diffusa azzurra dal basso, resa più delicata */}
+            <span 
+              className={`
+                absolute inset-1 bg-sky-400/15 blur-sm rounded-full -z-10 transition-opacity duration-500 
+                ${isActive ? 'opacity-100' : 'opacity-0'}
+              `}
+            />
+            
+            <span className="relative z-10 transition-all duration-500">
+              {item.label}
+            </span>
           </a>
         );
       })}
