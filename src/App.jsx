@@ -47,11 +47,11 @@ function App() {
         </section>
         
         {/* SEZIONE 3: LINKS */}
-        <section id="links" className="w-full py-24 md:py-32 px-6">
+        {/* <section id="links" className="w-full py-24 md:py-32 px-6">
           <div className="w-full max-w-5xl mx-auto">
             <LinkFeature />
           </div>
-        </section>
+        </section> */}
         
         {/* SEZIONE 4: CONTATTI */}
         <section id="contact" className="w-full bg-gradient-to-b from-transparent to-neutral-950/50 border-t border-white/[0.02] py-24 md:py-32 px-6">
