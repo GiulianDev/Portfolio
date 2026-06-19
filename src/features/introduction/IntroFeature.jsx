@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../../shared/ui/Button';
 
 export function IntroFeature() {
   return (
@@ -27,19 +28,15 @@ export function IntroFeature() {
       
       {/* Pulsanti d'azione rapidi */}
       <div className="flex flex-wrap gap-4 mt-10">
-        <a 
-          href="#github" 
-          className="bg-white text-black text-sm font-bold px-6 py-3.5 rounded-xl transition-all duration-300 hover:bg-neutral-200 hover:scale-[1.02]"
-        >
+        <Button href="#github" variant="primary">
           Esplora i miei progetti
-        </a>
-        <a 
-          href="#contact" 
-          className="bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-bold px-6 py-3.5 rounded-xl transition-colors duration-200"
-        >
+        </Button>
+        
+        <Button href="#contact" variant="outline">
           Contattami
-        </a>
+        </Button>
       </div>
+      
 
     </div>
   );

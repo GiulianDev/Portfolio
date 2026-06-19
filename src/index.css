@@ -3,7 +3,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #0f141c; /* Grigio ardesia scuro, non più nero pece */
+    background-color: #0f141c; 
   }
   body {
     margin: 0;
@@ -12,21 +12,21 @@
   }
 }
 
-/* Griglia geometrica potenziata per schermi mobile */
 .bg-grid-pattern {
-  background-size: 50px 50px; /* Griglia leggermente più larga per un look più pulito */
+  background-size: 50px 50px;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+/* ─── LA MAGIA DELLA DISSOLVENZA ─── */
+.mask-y-fade {
+  /* Sfuma i bordi superiore e inferiore del 15% */
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
 }
-::-webkit-scrollbar-track {
-  background: #0f141c;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
-}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }

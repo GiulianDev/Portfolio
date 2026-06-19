@@ -1,5 +1,6 @@
 // src/features/contact/ContactFeature.jsx
 import React from 'react';
+import { Button } from '../../shared/ui/Button';
 
 export function ContactFeature() {
   return (
@@ -31,23 +32,23 @@ export function ContactFeature() {
 
       {/* ─── BOTTONI DI CONTATTO DIRETTI ─── */}
       <div className="flex flex-wrap gap-4 mt-10">
-        <a 
+        <Button 
           href="mailto:tuamail@esempio.com" 
-          className="group relative bg-white text-black text-sm font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:bg-neutral-200 hover:scale-[1.02] shadow-xl shadow-black/40 overflow-hidden"
+          variant="primary" 
+          className="px-8 py-4" /* Allarghiamo il padding per dare più importanza */
         >
-          {/* Un micro-effetto di luce interna al passaggio del mouse */}
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_ease-in-out]" />
           Invia una Email
-        </a>
+        </Button>
         
-        <a 
+        <Button 
           href="https://linkedin.com/in/tuo-user" 
           target="_blank" 
-          rel="noopener noreferrer"
-          className="bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 text-white text-sm font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+          rel="noopener noreferrer" 
+          variant="outline"
+          className="px-8 py-4"
         >
           Connettiti su LinkedIn
-        </a>
+        </Button>
       </div>
 
       {/* ─── FOOTER MINIMALE INTEGRATO SUL FONDO DELLA PAGINA ─── */}

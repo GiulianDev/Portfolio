@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGithubProjects } from './useGithubProjects';
+import { Button } from '../../shared/ui/Button';
 
 export function GithubProjectsFeature() {
   // Recuperiamo i progetti GitHub dal tuo hook custom originale
@@ -80,24 +81,26 @@ export function GithubProjectsFeature() {
                 
                 {/* Pulsanti d'azione minimali */}
                 <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 mt-8 pt-4 border-t border-white/[0.04]">
-                  <a
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:flex-1 text-center bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-white text-xs font-bold py-3 px-4 rounded-xl transition-all duration-200"
+                  <Button 
+                    href={repo.html_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    variant="outline"
+                    className="w-full sm:flex-1 !py-3 !text-xs"
                   >
                     Repository Git
-                  </a>
+                  </Button>
 
                   {repo.homepage && (
-                    <a
-                      href={repo.homepage}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full sm:flex-1 text-center bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-xs font-black py-3 px-4 rounded-xl shadow-md shadow-emerald-500/10 transition-all duration-200"
+                    <Button 
+                      href={repo.homepage} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      variant="accent"
+                      className="w-full sm:flex-1 !py-3 !text-xs"
                     >
                       Sito Live ↗
-                    </a>
+                    </Button>
                   )}
                 </div>
 

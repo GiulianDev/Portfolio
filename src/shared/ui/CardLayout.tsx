@@ -1,4 +1,12 @@
-export function CardLayout({ children, gradientColor, watermarkNumber }) {
+import React, { ReactNode } from 'react';
+
+interface CardLayoutProps {
+  children: ReactNode;               
+  gradientColor: string;  
+  watermarkNumber?: string | number;  
+}
+
+export function CardLayout({ children, gradientColor, watermarkNumber }: CardLayoutProps) {
   return (
     <div className="w-full max-w-6xl p-12 bg-white/[0.03] border border-white/10 backdrop-blur-xl relative flex flex-col justify-between overflow-hidden shadow-2xl">
       {/* Glow leggero */}

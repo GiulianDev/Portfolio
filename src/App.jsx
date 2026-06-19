@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionLayout } from './shared/ui/SectionLayout';
 import { IntroFeature } from './features/introduction/IntroFeature';
 import { GithubProjectsFeature } from './features/github/GithubProjectsFeature';
 import { LinkFeature } from './features/links/LinkFeature';
@@ -8,17 +9,11 @@ function App() {
   return (
     <div className="relative min-h-screen bg-[#0f141c] text-neutral-200 font-sans antialiased selection:bg-emerald-500 selection:text-black">
       
-      {/* ─── EFFETTI DI LUCE DI SFONDO POTENZIATI (Visibili su Mobile) ─── */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        {/* Luce Viola/Blu alta */}
-        <div className="absolute top-[-5%] left-[-10%] w-[70vw] h-[70vw] sm:w-[50vw] sm:h-[50vw] bg-purple-500/10 rounded-full blur-[100px] sm:blur-[120px]" />
-        <div className="absolute top-[15%] right-[-10%] w-[60vw] h-[60vw] sm:w-[40vw] sm:h-[40vw] bg-blue-500/10 rounded-full blur-[100px]" />
-        
-        {/* Luce Smeraldo centrale (GitHub) */}
-        <div className="absolute top-[40%] left-[-5%] w-[80vw] h-[50vw] bg-emerald-500/8 rounded-full blur-[120px]" />
-        
-        {/* Luce Arancione bassa (Contatti) */}
-        <div className="absolute bottom-[-5%] right-[-10%] w-[70vw] h-[70vw] bg-orange-500/10 rounded-full blur-[100px]" />
+      {/* ─── LUCI GLOBALI DI SFONDO (Unificano il tema) ─── */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[40%] right-[-5%] w-[40vw] h-[40vw] bg-emerald-500/8 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-orange-500/10 rounded-full blur-[120px]" />
       </div>
 
       {/* ─── FLOATING NAVBAR ─── */}
@@ -34,36 +29,28 @@ function App() {
         <h1 className="text-sm font-black text-white tracking-widest uppercase opacity-40">Giulian.dev</h1>
       </header>
 
-      {/* ─── FLUSSO DELLE SEZIONI ─── */}
-      <main className="relative z-10 w-full">
+      {/* ─── FLUSSO DELLE SEZIONI (Con il nuovo componente condiviso) ─── */}
+      <main className="relative z-10 w-full flex flex-col items-center">
         
-        {/* SEZIONE 1: INTRO (La griglia qui risalterà molto di più) */}
-        <section id="intro" className="relative min-h-[85vh] w-full flex items-center justify-center bg-grid-pattern pt-24 pb-16 px-6">
-          <div className="w-full max-w-5xl">
-            <IntroFeature />
-          </div>
-        </section>
+        {/* L'intro usa la griglia e ha un'altezza minima per coprire lo schermo iniziale */}
+        <SectionLayout id="intro" hasGrid className="min-h-screen pt-32">
+          <IntroFeature />
+        </SectionLayout>
         
-        {/* SEZIONE 2: GITHUB */}
-        <section id="github" className="w-full bg-slate-900/20 border-y border-white/[0.04] py-24 md:py-32 px-6">
-          <div className="w-full max-w-5xl mx-auto">
-            <GithubProjectsFeature />
-          </div>
-        </section>
+        {/* GitHub usa la griglia per dare il feeling "tech/code" */}
+        <SectionLayout id="github" hasGrid>
+          <GithubProjectsFeature />
+        </SectionLayout>
         
-        {/* SEZIONE 3: LINKS */}
-        {/* <section id="links" className="w-full py-24 md:py-32 px-6">
-          <div className="w-full max-w-5xl mx-auto">
-            <LinkFeature />
-          </div>
-        </section> */}
+        {/* I link rimangono puliti senza griglia per spezzare il ritmo visivo */}
+        {/* <SectionLayout id="links">
+          <LinkFeature />
+        </SectionLayout> */}
         
-        {/* SEZIONE 4: CONTATTI */}
-        <section id="contact" className="w-full bg-gradient-to-b from-transparent to-slate-900/40 border-t border-white/[0.04] py-24 md:py-32 px-6">
-          <div className="w-full max-w-5xl mx-auto">
-            <ContactFeature />
-          </div>
-        </section>
+        {/* Contatti usa la griglia per chiudere il sito con lo stesso stile dell'apertura */}
+        <SectionLayout id="contact" hasGrid>
+          <ContactFeature />
+        </SectionLayout>
 
       </main>
     </div>
