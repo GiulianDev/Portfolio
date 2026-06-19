@@ -1,7 +1,7 @@
 // src/features/github/GithubProjectsFeature.tsx
 import React from 'react';
 import { useGithubProjects } from './useGithubProjects';
-import { ProjectCard } from '../../shared/ui/ProjectCard';
+import { ProjectCard, MinimalBadge } from '@ui';
 
 export function GithubProjectsFeature() {
   const { projects, loading, error } = useGithubProjects('GiulianDev', 6);
@@ -11,12 +11,11 @@ export function GithubProjectsFeature() {
       
       {/* ─── INTESTAZIONE DELLA SEZIONE ─── */}
       <div className="flex flex-col">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></span>
-          <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">
-            Open Source & Repository
-          </span>
-        </div>
+       
+       {/* Badge Smeraldo (Es. per i progetti GitHub) */}
+        <MinimalBadge dotClass="bg-emerald-500 shadow-emerald-500/50">
+          Open Source & Repository
+        </MinimalBadge>
         
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black mt-4 tracking-tight text-white leading-none">
           Codice in <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">Movimento.</span>

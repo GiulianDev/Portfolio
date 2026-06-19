@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from '../../shared/ui/Button';
-import { TechBadge } from '../../shared/ui/TechBadge'
+import { Button, TechBadge, MinimalBadge } from '@ui'
 
 export function IntroFeature() {
 
@@ -18,14 +17,11 @@ export function IntroFeature() {
   return (
     <div className="w-full flex flex-col justify-center min-h-[50vh]">
       
-      {/* Badge minimale */}
-      <div className="flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">
-          Disponibile per nuove opportunità
-        </span>
-      </div>
-      
+      {/* Badge Arancione (Es. per l'Intro o i contatti) */}
+      <MinimalBadge dotClass="bg-cyan-500 shadow-cyan-500/50">
+        Disponibile per nuove collaborazioni
+      </MinimalBadge>
+
       {/* Titolo Principale Gigante con Gradiente (Spezza il nero!) */}
       <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mt-6 tracking-tight text-white leading-[1.1]">
         Sviluppo esperienze web <br />

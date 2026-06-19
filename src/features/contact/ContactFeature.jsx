@@ -1,6 +1,6 @@
 // src/features/contact/ContactFeature.jsx
 import React from 'react';
-import { Button } from '../../shared/ui/Button';
+import { Button, MinimalBadge } from '@ui';
 
 export function ContactFeature() {
   return (
@@ -8,13 +8,11 @@ export function ContactFeature() {
       
       {/* ─── INTESTAZIONE DELLA SEZIONE ─── */}
       <div className="flex flex-col">
-        {/* Badge minimale con punto luce arancione */}
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-orange-500 shadow-lg shadow-orange-500/50 animate-pulse"></span>
-          <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">
-            Disponibile per nuove collaborazioni
-          </span>
-        </div>
+
+        {/* Badge Azzurro Elettrico (Es. in linea con il nuovo tema Tech) */}
+        <MinimalBadge dotClass="bg-orange-500 shadow-orange-500/50">
+          Feature In Evidenza
+        </MinimalBadge>
         
         {/* Titolo Gigante con gradiente caldo */}
         <h2 className="text-4xl sm:text-6xl md:text-7xl font-black mt-6 tracking-tight text-white leading-[1.1] max-w-3xl">

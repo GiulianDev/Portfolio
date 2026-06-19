@@ -8,6 +8,7 @@ import { ContactFeature } from './features/contact/ContactFeature';
 function App() {
   return (
     <div className="relative min-h-screen bg-[#020617] text-neutral-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">        
+     
       {/* ─── LUCI FLUTTUANTI (Effetto Azzurro Elettrico / Tech) ─── */}
       <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         
