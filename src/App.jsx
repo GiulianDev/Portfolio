@@ -47,9 +47,9 @@ function App() {
             {({ isActive }) => <GithubProjectsFeature isActive={isActive} />}
           </SwiperSlide>
 
-          <SwiperSlide className="h-full">
+          {/* <SwiperSlide className="h-full">
             {({ isActive }) => <LinkFeature isActive={isActive} />}
-          </SwiperSlide>
+          </SwiperSlide> */}
           
           <SwiperSlide className="h-full">
             {({ isActive }) => <ContactFeature isActive={isActive} />}
