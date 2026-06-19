@@ -6,49 +6,56 @@ import { ContactFeature } from './features/contact/ContactFeature';
 
 function App() {
   return (
-    // Sfondo unico, lo scroll torna ad essere quello nativo, fluido e piacevole del browser
-    <div className="min-h-screen bg-[#0a0a0a] text-neutral-100 selection:bg-white selection:text-black antialiased">
+    <div className="relative min-h-screen bg-[#030712] text-neutral-200 font-sans antialiased selection:bg-emerald-500 selection:text-black">
       
-      {/* Floating Pill Navbar rimane fissa ed elegante */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-2.5 flex items-center gap-6 z-50 shadow-xl shadow-black/40">
+      {/* ─── EFFETTI DI LUCE DI SFONDO (Rendono il sito dinamico e non cupo) ─── */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        {/* Luce Viola/Blu dietro la Intro */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-900/15 rounded-full blur-[120px]" />
+        <div className="absolute top-[10%] right-[-5%] w-[40vw] h-[40vw] bg-blue-900/10 rounded-full blur-[100px]" />
+        
+        {/* Luce Smeraldo dietro GitHub */}
+        <div className="absolute top-[35%] left-[20%] w-[60vw] h-[40vw] bg-emerald-950/20 rounded-full blur-[130px]" />
+        
+        {/* Luce Arancione/Rossa dietro i Contatti */}
+        <div className="absolute bottom-[-5%] right-[-10%] w-[50vw] h-[50vw] bg-orange-950/20 rounded-full blur-[120px]" />
+      </div>
+
+      {/* ─── FLOATING NAVBAR PREMIUM ─── */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 bg-neutral-950/40 backdrop-blur-md border border-white/5 rounded-full px-6 py-2 flex items-center gap-6 z-50 shadow-lg shadow-black/20">
         <a href="#intro" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Chi Sono</a>
         <a href="#github" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">GitHub</a>
         <a href="#links" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Progetti</a>
         <a href="#contact" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Contatti</a>
       </nav>
 
-      {/* Brand Header */}
-      <header className="fixed top-7 left-8 z-40 hidden lg:block">
-        <h1 className="text-sm font-black text-white tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">Giulian.dev</h1>
-      </header>
-
-      {/* Contenitore principale: non usiamo max-w globale qui per permettere layout più dinamici */}
-      <main className="w-full">
+      {/* ─── FLUSSO DELLE SEZIONI A TUTTA LARGHEZZA ─── */}
+      <main className="relative z-10 w-full">
         
-        {/* Sezione 1: Intro (Altezza minima quasi a schermo intero solo per l'impatto iniziale) */}
-        <section id="intro" className="min-h-[90vh] flex items-center justify-center px-4 pt-24 pb-12">
-          <div className="w-full max-w-4xl">
+        {/* SEZIONE 1: INTRO (Griglia geometrica soft di sfondo) */}
+        <section id="intro" className="relative min-h-[90vh] w-full flex items-center justify-center bg-grid-pattern pt-24 pb-16 px-6">
+          <div className="w-full max-w-5xl">
             <IntroFeature />
           </div>
         </section>
         
-        {/* Sezione 2: GitHub (Niente h-screen! Si allunga quanto serve, eliminando lo scroll interno fastidioso) */}
-        <section id="github" className="py-24 md:py-36 px-4 border-t border-white/[0.03] bg-gradient-to-b from-transparent to-white/[0.01]">
+        {/* SEZIONE 2: GITHUB (Sfondo leggermente più scuro per stacco visivo) */}
+        <section id="github" className="w-full bg-neutral-950/30 border-y border-white/[0.02] py-24 md:py-32 px-6">
           <div className="w-full max-w-5xl mx-auto">
             <GithubProjectsFeature />
           </div>
         </section>
         
-        {/* Sezione 3: Link Extra */}
-        <section id="links" className="py-24 md:py-36 px-4 border-t border-white/[0.03]">
-          <div className="w-full max-w-4xl mx-auto">
+        {/* SEZIONE 3: LINKS */}
+        <section id="links" className="w-full py-24 md:py-32 px-6">
+          <div className="w-full max-w-5xl mx-auto">
             <LinkFeature />
           </div>
         </section>
         
-        {/* Sezione 4: Contatti */}
-        <section id="contact" className="py-24 md:py-36 px-4 border-t border-white/[0.03] bg-gradient-to-b from-white/[0.01] to-transparent">
-          <div className="w-full max-w-4xl mx-auto">
+        {/* SEZIONE 4: CONTATTI */}
+        <section id="contact" className="w-full bg-gradient-to-b from-transparent to-neutral-950/50 border-t border-white/[0.02] py-24 md:py-32 px-6">
+          <div className="w-full max-w-5xl mx-auto">
             <ContactFeature />
           </div>
         </section>

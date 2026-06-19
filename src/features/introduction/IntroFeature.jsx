@@ -1,25 +1,46 @@
-// src/features/introduction/IntroFeature.jsx
 import React from 'react';
-import { CardLayout } from '../../shared/ui/CardLayout';
 
-// Accettiamo isActive come parametro
-export function IntroFeature({ isActive }) {
+export function IntroFeature() {
   return (
-    <CardLayout gradientColor="from-purple-600 to-indigo-700" watermarkNumber="01" isActive={isActive}>
-      <div>
-        <span className="inline-block bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-          Chi Sono
+    <div className="w-full flex flex-col justify-center min-h-[50vh]">
+      
+      {/* Badge minimale */}
+      <div className="flex items-center gap-2">
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">
+          Disponibile per nuove opportunità
         </span>
-        <h2 className="text-3xl md:text-5xl font-extrabold mt-6 text-white tracking-tight leading-none">
-          Presentazione
-        </h2>
       </div>
       
-      <div className="max-w-xl">
-        <p className="text-white/80 text-lg mb-6">
-          Qui in futuro potremo inserire un componente Video Player o una bio interattiva.
-        </p>
+      {/* Titolo Principale Gigante con Gradiente (Spezza il nero!) */}
+      <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mt-6 tracking-tight text-white leading-[1.1]">
+        Sviluppo esperienze web <br />
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-emerald-400">
+          innovative e performanti.
+        </span>
+      </h1>
+      
+      {/* Sottotitolo / Bio corta */}
+      <p className="text-neutral-400 text-lg sm:text-xl mt-8 max-w-2xl leading-relaxed">
+        Ciao, sono <span className="text-white font-semibold">Giulian</span>. Sono uno sviluppatore specializzato in React, Vite e Tailwind CSS. Trasformo idee complesse in interfacce pulite, veloci e accessibili a chiunque.
+      </p>
+      
+      {/* Pulsanti d'azione rapidi */}
+      <div className="flex flex-wrap gap-4 mt-10">
+        <a 
+          href="#github" 
+          className="bg-white text-black text-sm font-bold px-6 py-3.5 rounded-xl transition-all duration-300 hover:bg-neutral-200 hover:scale-[1.02]"
+        >
+          Esplora i miei progetti
+        </a>
+        <a 
+          href="#contact" 
+          className="bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-bold px-6 py-3.5 rounded-xl transition-colors duration-200"
+        >
+          Contattami
+        </a>
       </div>
-    </CardLayout>
+
+    </div>
   );
 }
