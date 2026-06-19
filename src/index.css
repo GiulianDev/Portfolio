@@ -60,3 +60,34 @@
 .swiper-pagination-bottom {
   bottom: 0px !important; 
 }
+
+/* --- CUSTOM SCROLLBAR ELEGANTE (Stile Moderno/Netflix) --- */
+
+/* 1. Assegniamo una larghezza minima alla barra */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 2. Lo sfondo del binario (track) della scrollbar - lo teniamo invisibile o quasi */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+/* 3. La barra che si muove (thumb) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15); 
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+/* 4. Effetto al passaggio del mouse sulla barra */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3); 
+}
+
+/* Supporto per Firefox (che usa una sintassi diversa e più limitata) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.02);
+}
