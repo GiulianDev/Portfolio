@@ -1,63 +1,55 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Rimuoviamo la Navigation (le frecce verticali sono scomode) e teniamo i moduli verticali
-import { Mousewheel, Keyboard, Pagination } from 'swiper/modules'; 
-
-import 'swiper/css';
-import 'swiper/css/pagination'; 
-
-// Import delle tue feature
 import { IntroFeature } from './features/introduction/IntroFeature';
 import { GithubProjectsFeature } from './features/github/GithubProjectsFeature';
+import { LinkFeature } from './features/links/LinkFeature';
 import { ContactFeature } from './features/contact/ContactFeature';
 
 function App() {
   return (
-    // Cambiamo l'altezza in h-screen rigida per bloccare la viewport cinematografica
-    <div className="h-screen w-screen bg-[#0a0a0a] overflow-hidden flex flex-col relative font-sans antialiased text-gray-200">
+    // Questo è il vero contenitore dello scroll-snap: controlla l'altezza e lo scrolling dell'intera pagina
+    <div className="h-screen w-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory bg-[#0a0a0a] text-neutral-100 custom-scrollbar select-none">
       
-      {/* 1. HEADER FISSO CON SFUMATURA (Le card svaniranno qui sotto) */}
-      <header className="absolute top-0 left-0 w-full px-6 py-8 md:px-12 z-50 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent pb-20 pointer-events-auto">
-        <h1 className="text-3xl font-black text-white tracking-tight">Portfolio</h1>
+      {/* Floating Pill Navbar - Perfetta sia per Desktop che Mobile */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-2.5 flex items-center gap-5 z-50 shadow-2xl shadow-black/80 transition-all duration-300 hover:border-white/20 pointer-events-auto">
+        <a href="#intro" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Chi Sono</a>
+        <a href="#github" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">GitHub</a>
+        <a href="#links" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Progetti</a>
+        <a href="#contact" className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors">Contatti</a>
+      </nav>
+
+      {/* Brand Header (Nascosto su mobile per pulizia, visibile su PC) */}
+      <header className="fixed top-7 left-8 z-40 hidden md:block">
+        <h1 className="text-lg font-black text-white tracking-tighter uppercase">Giulian.dev</h1>
       </header>
 
-      {/* 2. CONTENITORE PRINCIPALE DEL REEL VERTICALE */}
-      <main className="w-full h-full flex-grow">
-        <Swiper
-          direction="vertical" // <-- Il trucco magico è qui!
-          modules={[Mousewheel, Keyboard, Pagination]}
-          centeredSlides={true}
-          grabCursor={true}
-          pagination={{ clickable: true }}
-          mousewheel={true}
-          keyboard={true}
-          // Mostra la card centrale e fa sbucare la precedente in alto e la successiva in basso
-          slidesPerView={1.18} 
-          spaceBetween={30}
-          className="w-full h-full"
-        >
-          {/* Usiamo il padding verticale (py-28) per non far sovrapporre il testo all'header/footer sfumati */}
-          <SwiperSlide className="h-full px-4 md:px-24 py-28 flex items-center justify-center">
-            {({ isActive }) => <IntroFeature isActive={isActive} />}
-          </SwiperSlide>
-          
-          <SwiperSlide className="h-full px-4 md:px-24 py-28 flex items-center justify-center">
-            {({ isActive }) => <GithubProjectsFeature isActive={isActive} />}
-          </SwiperSlide>
-          
-          <SwiperSlide className="h-full px-4 md:px-24 py-28 flex items-center justify-center">
-            {({ isActive }) => <ContactFeature isActive={isActive} />}
-          </SwiperSlide>
-        </Swiper>
+      {/* Flusso delle sezioni - Ognuna è agganciata allo scroll snap */}
+      <main className="w-full h-full">
+        
+        <section id="intro" className="snap-start h-screen w-full flex items-center justify-center px-4 sm:px-6">
+          <div className="w-full max-w-5xl transition-all duration-500">
+            <IntroFeature isActive={true} />
+          </div>
+        </section>
+        
+        <section id="github" className="snap-start h-screen w-full flex items-center justify-center px-4 sm:px-6">
+          <div className="w-full max-w-5xl h-[85vh] flex flex-col">
+            <GithubProjectsFeature isActive={true} />
+          </div>
+        </section>
+        
+        <section id="links" className="snap-start h-screen w-full flex items-center justify-center px-4 sm:px-6">
+          <div className="w-full max-w-5xl transition-all duration-500">
+            <LinkFeature isActive={true} />
+          </div>
+        </section>
+        
+        <section id="contact" className="snap-start h-screen w-full flex items-center justify-center px-4 sm:px-6">
+          <div className="w-full max-w-5xl transition-all duration-500">
+            <ContactFeature isActive={true} />
+          </div>
+        </section>
+
       </main>
-
-      {/* 3. FOOTER FISSO CON SFUMATURA (Le card svaniranno anche qui sotto) */}
-      <footer className="absolute bottom-0 left-0 w-full py-8 text-center text-white/30 text-xs z-50 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent pt-20 pointer-events-none">
-        <p className="tracking-widest uppercase font-medium text-[10px]">
-          © 2026 GiulianDev • Usa la rotellina o trascina per esplorare
-        </p>
-      </footer>
-
     </div>
   );
 }
