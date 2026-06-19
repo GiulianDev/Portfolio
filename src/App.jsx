@@ -1,9 +1,11 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel, Keyboard } from 'swiper/modules'; // Rimosso EffectCreative
+// Importiamo Pagination e lo includiamo tra i moduli utilizzati
+import { Navigation, Mousewheel, Keyboard, Pagination } from 'swiper/modules'; 
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination'; // Nuova importazione CSS per i puntini
 
 import { IntroFeature } from './features/introduction/IntroFeature';
 import { GithubProjectsFeature } from './features/projects/GithubProjectsFeature';
@@ -20,10 +22,11 @@ function App() {
       {/* Il main ora occupa tutta la larghezza (w-full) senza max-width, così le card laterali toccano i bordi */}
       <main className="w-full flex-grow flex items-center my-4">
         <Swiper
-          modules={[Navigation, Mousewheel, Keyboard]}
+          modules={[Navigation, Mousewheel, Keyboard, Pagination]}
           centeredSlides={true}
           grabCursor={true}
           navigation={true}
+          pagination={{ clickable: true }}
           mousewheel={true}
           keyboard={true}
           // Modifica qui: valori più vicini a 1 rendono la card centrale più grande
@@ -32,7 +35,6 @@ function App() {
             768: { slidesPerView: 1.25, spaceBetween: 40 },  // Molto più grande su tablet
             1024: { slidesPerView: 1.3, spaceBetween: 60 },  // Ampia su desktop
           }}
-          // Aumentiamo l'altezza base della sezione (h-[75vh] o superiore)
           className="w-full h-[80vh] md:h-[80vh] py-10"
         >
           {/* SwiperSlide espone isActive come funzione (Render Prop), lo catturiamo e lo passiamo alla Feature */}
