@@ -11,7 +11,6 @@ function App() {
   const [activeSection, setActiveSection] = useState('intro');
 
   useEffect(() => {
-    // Configura l'Observer per aggiornare la Navbar durante lo scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -20,10 +19,9 @@ function App() {
           }
         });
       },
-      { threshold: 0.5 } // Scatta quando la sezione è visibile al 50%
+      { threshold: 0.5 } 
     );
 
-    // Osserva tutte le section che hanno un id
     const sections = document.querySelectorAll('main section[id]');
     sections.forEach((section) => observer.observe(section));
 
@@ -31,26 +29,27 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#020617] text-neutral-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">        
+    // Ho cambiato il bg di base per armonizzarsi con il nuovo index.css
+    <div className="relative min-h-screen bg-[#04091a] text-neutral-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">        
      
-      {/* ─── LUCI FLUTTUANTI (Effetto Azzurro Elettrico / Tech) ─── */}
+      {/* ─── LUCI FLUTTUANTI (Palette Elettrica Morbida) ─── */}
       <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         
-        {/* 1. Azzurro Elettrico in alto a sinistra */}
+        {/* 1. Base: Blu Puro Profondo */}
         <div 
-          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/20 rounded-full blur-[130px] mix-blend-screen animate-blob" 
+          className="absolute top-[-5%] left-[-10%] w-[90vw] sm:w-[50vw] h-[90vw] sm:h-[50vw] bg-blue-600/30 rounded-full blur-[100px] sm:blur-[130px] mix-blend-screen animate-electric" 
           style={{ animationDelay: '0s' }}
         />
         
-        {/* 2. Ciano (Neon) centrale per i punti di massima luce */}
+        {/* 2. Core (Destra): Indaco (Ora più soffuso: opacità ridotta al 20% e blur aumentato) */}
         <div 
-          className="absolute top-[30%] right-[-5%] w-[40vw] h-[40vw] bg-cyan-500/15 rounded-full blur-[120px] mix-blend-screen animate-blob" 
+          className="absolute top-[30%] right-[-10%] w-[80vw] sm:w-[40vw] h-[80vw] sm:h-[40vw] bg-indigo-500/20 rounded-full blur-[120px] sm:blur-[150px] mix-blend-screen animate-electric" 
           style={{ animationDelay: '2s' }}
         />
         
-        {/* 3. Indaco profondo in basso (dà peso allo sfondo senza fare troppa luce) */}
+        {/* 3. Accento: Violetto */}
         <div 
-          className="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] bg-indigo-600/15 rounded-full blur-[140px] mix-blend-screen animate-blob" 
+          className="absolute bottom-[-5%] left-[5%] w-[85vw] sm:w-[50vw] h-[85vw] sm:h-[50vw] bg-violet-600/20 rounded-full blur-[100px] sm:blur-[140px] mix-blend-screen animate-electric" 
           style={{ animationDelay: '4s' }}
         />
         
@@ -59,31 +58,26 @@ function App() {
       {/* ─── FLOATING NAVBAR ─── */}
       <Navbar id="Navbar" activeSection={activeSection} />
 
-
       {/* Brand Header */}
       <header className="fixed top-7 left-8 z-40 hidden lg:block">
         <h1 className="text-sm font-black text-white tracking-widest uppercase opacity-40">Giulian.dev</h1>
       </header>
 
-      {/* ─── FLUSSO DELLE SEZIONI (Con il nuovo componente condiviso) ─── */}
+      {/* ─── FLUSSO DELLE SEZIONI ─── */}
       <main className="relative z-10 w-full flex flex-col items-center">
         
-        {/* L'intro usa la griglia e ha un'altezza minima per coprire lo schermo iniziale */}
         <SectionLayout id="intro" hasGrid className="min-h-screen pt-32">
           <IntroFeature />
         </SectionLayout>
         
-        {/* GitHub usa la griglia per dare il feeling "tech/code" */}
         <SectionLayout id="github" hasGrid>
           <GithubProjectsFeature />
         </SectionLayout>
         
-        {/* I link rimangono puliti senza griglia per spezzare il ritmo visivo */}
         {/* <SectionLayout id="links">
           <LinkFeature />
         </SectionLayout> */}
         
-        {/* Contatti usa la griglia per chiudere il sito con lo stesso stile dell'apertura */}
         <SectionLayout id="contact" hasGrid>
           <ContactFeature />
         </SectionLayout>
