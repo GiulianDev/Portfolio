@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { SectionLayout } from './shared/ui/SectionLayout';
-import { IntroFeature } from './features/introduction/IntroFeature';
-import { GithubProjectsFeature } from './features/github/GithubProjectsFeature';
-import { LinkFeature } from './features/links/LinkFeature';
-import { ContactFeature } from './features/contact/ContactFeature';
-import { Navbar } from '@ui';
+import { Navbar, SectionLayout } from '@ui';
+import { GithubProjectsFeature } from '@features/github/GithubProjectsFeature';
+import { IntroFeature } from '@features/introduction/IntroFeature';
+import { ContactFeature } from '@features/contact/ContactFeature';
 
 function App() {
 
@@ -56,7 +54,7 @@ function App() {
       </div>
 
       {/* ─── FLOATING NAVBAR ─── */}
-      <Navbar id="Navbar" activeSection={activeSection} />
+      <Navbar activeSection={activeSection} />
 
       {/* Brand Header */}
       <header className="fixed top-7 left-8 z-40 hidden lg:block">
