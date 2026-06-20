@@ -1,5 +1,7 @@
+// src/features/introduction/IntroFeature.jsx
 import React from 'react';
-import { Button, TechBadge, MinimalBadge } from '@ui'
+import { Button, TechBadge, MinimalBadge } from '@ui';
+import { ScrollReveal } from '../../shared/ui/ScrollReveal';
 
 export function IntroFeature() {
 
@@ -17,51 +19,67 @@ export function IntroFeature() {
   return (
     <div className="w-full flex flex-col justify-center min-h-[50vh]">
       
-      {/* Badge Arancione (Es. per l'Intro o i contatti) */}
-      <MinimalBadge dotClass="bg-cyan-500 shadow-cyan-500/50">
-        Disponibile per nuove collaborazioni
-      </MinimalBadge>
+      {/* 1. Badge appare per primo */}
+      <ScrollReveal delay={0.1}>
+        <MinimalBadge dotClass="bg-cyan-500 shadow-cyan-500/50">
+          Disponibile per nuove collaborazioni
+        </MinimalBadge>
+      </ScrollReveal>
 
-      {/* Titolo Principale Gigante con Gradiente (Spezza il nero!) */}
-      <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mt-6 tracking-tight text-white leading-[1.1]">
-        Sviluppo esperienze web <br />
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-emerald-400">
-          innovative e performanti.
-        </span>
-      </h1>
+      {/* 2. Il Titolo appare subito dopo */}
+      <ScrollReveal delay={0.2}>
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mt-6 tracking-tight text-white leading-[1.1]">
+          Sviluppo esperienze web <br />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-emerald-400">
+            innovative e performanti.
+          </span>
+        </h1>
+      </ScrollReveal>
       
-      {/* Sottotitolo / Bio corta */}
-      <p className="text-neutral-400 text-lg sm:text-xl mt-8 max-w-2xl leading-relaxed">
-        Ciao, sono <span className="text-white font-semibold">Giulian</span>. Sono uno sviluppatore specializzato in React, Vite e Tailwind CSS. Trasformo idee complesse in interfacce pulite, veloci e accessibili a chiunque.
-      </p>
+      {/* 3. La Bio segue il flusso */}
+      <ScrollReveal delay={0.3}>
+        <p className="text-neutral-400 text-lg sm:text-xl mt-8 max-w-2xl leading-relaxed">
+          Ciao, sono <span className="text-white font-semibold">Giulian</span>. Sono uno sviluppatore specializzato in React, Vite e Tailwind CSS. Trasformo idee complesse in interfacce pulite, veloci e accessibili a chiunque.
+        </p>
+      </ScrollReveal>
 
-      {/* ─── NUOVA SEZIONE TECH STACK ─── */}
+      {/* ─── SEZIONE TECH STACK ANIMATA A CASCATA VELOCE ─── */}
       <div className="mt-8 flex flex-col gap-3">
-        <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">Tech Stack Principale</span>
+        <ScrollReveal delay={0.4}>
+          <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">Tech Stack Principale</span>
+        </ScrollReveal>
+        
         <div className="flex flex-wrap gap-2.5">
-          {technologies.map((tech) => (
-            <TechBadge 
+          {technologies.map((tech, index) => (
+            /* Moltiplico l'index per 0.05 così ogni badge ha un ritardo di 50ms rispetto al precedente */
+            <ScrollReveal 
               key={tech.label} 
-              label={tech.label} 
-              dotColorClass={tech.dot} 
-              hoverBorderClass={tech.border} 
-            />
+              delay={0.45 + (index * 0.05)} 
+              direction="up"
+            >
+              <TechBadge 
+                label={tech.label} 
+                dotColorClass={tech.dot} 
+                hoverBorderClass={tech.border} 
+              />
+            </ScrollReveal>
           ))}
         </div>
       </div>
       
-      {/* Pulsanti d'azione rapidi */}
-      <div className="flex flex-wrap gap-4 mt-10">
-        <Button href="#github" variant="primary">
-          Esplora i miei progetti
-        </Button>
-        
-        <Button href="#contact" variant="outline">
-          Contattami
-        </Button>
-      </div>
+      {/* 4. Infine compaiono i bottoni d'azione */}
+      <ScrollReveal delay={0.8}>
+        <div className="flex flex-wrap gap-4 mt-10">
+          <Button href="#github" variant="primary">
+            Esplora i miei progetti
+          </Button>
+          
+          <Button href="#contact" variant="outline">
+            Contattami
+          </Button>
+        </div>
+      </ScrollReveal>
       
-
     </div>
   );
 }

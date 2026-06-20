@@ -5,3 +5,4 @@ export * from './Navbar';
 export * from './ProjectCard';
 export * from './SectionLayout';
 export * from './TechBadge';
+export * from './ScrollReveal';
