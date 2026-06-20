@@ -1,7 +1,6 @@
 // src/features/contact/ContactFeature.tsx
 import React from 'react';
-import { Button, MinimalBadge } from '@ui';
-import { ScrollReveal } from '../../shared/ui/ScrollReveal';
+import { Button, MinimalBadge, ScrollReveal } from '@ui';
 
 export function ContactFeature() {
   return (
