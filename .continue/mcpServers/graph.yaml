@@ -1,0 +1,11 @@
+name: code-review-graph
+version: 0.0.1
+schema: v1
+mcpServers:
+  - name: code-review-graph
+    command: /Users/giuliano/.local/bin/code-review-graph
+    args:
+      - serve
+      - --repo
+      - /Users/giuliano/Documents/WEB/Projects/Portfolio
+    env: {}
