@@ -6,3 +6,4 @@ export * from './ProjectCard';
 export * from './SectionLayout';
 export * from './TechBadge';
 export * from './ScrollReveal';
+export * from './BackgroundLights';
