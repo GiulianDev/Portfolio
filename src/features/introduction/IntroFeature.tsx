@@ -61,7 +61,7 @@ export function IntroFeature() {
       
       {/* 1. Badge */}
       <ScrollReveal delay={0.1}>
-        <MinimalBadge dotClass="bg-cyan-500 shadow-cyan-500/50">
+         <MinimalBadge dotClass="bg-fuchsia-500 shadow-fuchsia-500/50">
           Disponibile per nuove collaborazioni
         </MinimalBadge>
       </ScrollReveal>
