@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, SectionLayout, BackgroundLights } from '@ui';
+import { Navbar, SectionLayout, BackgroundLights, Footer } from '@ui';
 import { GithubProjectsFeature } from '@features/github/GithubProjectsFeature';
 import { IntroFeature } from '@features/introduction/IntroFeature';
 import { ContactFeature } from '@features/contact/ContactFeature';
@@ -61,6 +61,10 @@ function App() {
         </SectionLayout>
 
       </main>
+
+      {/* ─── GLOBAL FOOTER ─── */}
+      <Footer />
+
     </div>
   );
 }

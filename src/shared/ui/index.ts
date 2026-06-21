@@ -7,3 +7,4 @@ export * from './SectionLayout';
 export * from './TechBadge';
 export * from './ScrollReveal';
 export * from './BackgroundLights';
+export * from './Footer'
