@@ -35,7 +35,7 @@ const TwitterIcon = () => (
 
 // ─── ESPORTIAMO GLI ARRAY DATI ─── //
 export const socials = [
-  { name: 'GitHub', icon: GithubIcon, url: 'https://github.com/tuo-user', hoverColor: 'hover:text-white hover:border-white hover:bg-white/5' },
+  { name: 'GitHub', icon: GithubIcon, url: 'https://github.com/GiulianDev', hoverColor: 'hover:text-white hover:border-white hover:bg-white/5' },
   { name: 'LinkedIn', icon: LinkedinIcon, url: 'https://linkedin.com/in/tuo-user', hoverColor: 'hover:text-blue-400 hover:border-blue-400/50 hover:bg-blue-400/5' },
   { name: 'Instagram', icon: InstagramIcon, url: 'https://instagram.com/tuo-user', hoverColor: 'hover:text-pink-400 hover:border-pink-400/50 hover:bg-pink-400/5' },
   { name: 'Twitter / X', icon: TwitterIcon, url: 'https://twitter.com/tuo-user', hoverColor: 'hover:text-sky-400 hover:border-sky-400/50 hover:bg-sky-400/5' },
@@ -46,8 +46,8 @@ export const technologies = [
   { label: 'JavaScript', dot: 'bg-yellow-400', border: 'hover:border-yellow-400/50' },
   { label: 'React', dot: 'bg-cyan-400', border: 'hover:border-cyan-400/50' },
   { label: 'Tailwind CSS', dot: 'bg-sky-400', border: 'hover:border-sky-400/50' },
-  { label: 'HTML', dot: 'bg-orange-500', border: 'hover:border-orange-500/50' },
-  { label: 'CSS', dot: 'bg-blue-400', border: 'hover:border-blue-400/50' },
   { label: 'C#', dot: 'bg-green-500', border: 'hover:border-green-500/50' },
   { label: 'C++', dot: 'bg-pink-500', border: 'hover:border-pink-500/50' },
+  { label: 'HTML', dot: 'bg-orange-500', border: 'hover:border-orange-500/50' },
+  { label: 'CSS', dot: 'bg-blue-400', border: 'hover:border-blue-400/50' },
 ];
