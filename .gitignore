@@ -26,3 +26,15 @@ dist-ssr
 .firebase/hosting.cHVibGlj.cache
 .firebaserc
 /public
+
+# vite
+.vite/**
+
+# Added by code-review-graph
+.code-review-graph/**
+.gemini/**
+.kiro/**
+.claude/**
+.github/**
+.qoder/**
+
