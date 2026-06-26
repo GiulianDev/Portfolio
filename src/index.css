@@ -12,18 +12,24 @@
     padding: 0;
     overflow-x: hidden;
   }
+  
+  #app-container {
+    @apply relative min-h-screen bg-[#04091a] text-neutral-200 font-sans;
+  }
+
 }
 
 /* ─── UTILITIES VISIVE ─── */
 
 /* Griglia Tech: resa molto più subdola (bianco su nero, bassa opacità) per non distrarre */
-/* .bg-grid-pattern {
+.bg-grid-pattern {
   background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
+  linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+  
+/* 
 .mask-y-fade {
   mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);

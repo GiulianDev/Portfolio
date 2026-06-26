@@ -30,7 +30,7 @@ function App() {
 
   return (
     // Ho cambiato il bg di base per armonizzarsi con il nuovo index.css
-    <div className="relative min-h-screen bg-[#04091a] text-neutral-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">        
+    <div id="app-container">        
      
       {/* ─── LUCI FLUTTUANTI (Palette Elettrica Morbida e Attenuata) ─── */}
       <BackgroundLights activeSection={activeSection} />
@@ -44,7 +44,7 @@ function App() {
       </header>
 
       {/* ─── FLUSSO DELLE SEZIONI ─── */}
-      <main className="relative z-10 w-full flex flex-col items-center">
+      <main id="sections-container" className="relative z-10 w-full flex flex-col items-center">
         
         <SectionLayout id={sectionsArray[0]} hasGrid>
           <IntroFeature />

@@ -23,11 +23,11 @@ export function SectionLayout({
       
       {/* ─── EFFETTO GRIGLIA CON DISSOLVENZA (Mask) ─── */}
       {hasGrid && (
-        <div className="absolute inset-0 z-0 pointer-events-none bg-grid-pattern mask-y-fade opacity-80" />
+        <div id={`${id}-bg-grid`} className="absolute inset-0 z-0 pointer-events-none bg-grid-pattern mask-y-fade opacity-80" />
       )}
       
       {/* ─── CONTENITORE DEL CONTENUTO ─── */}
-      <div className="relative z-10 w-full max-w-5xl px-6">
+      <div id={`${id}-container`} className="relative z-10 w-full max-w-5xl px-6">
         {children}
       </div>
       
