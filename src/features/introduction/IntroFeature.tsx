@@ -1,7 +1,8 @@
 // src/features/introduction/IntroFeature.tsx
 import React from 'react';
-import { Button, TechBadge, MinimalBadge, ScrollReveal } from '@ui';
-import { socials, technologies } from './introData';
+import { Button, MinimalBadge, ScrollReveal } from '@ui';
+import { Socials } from '@features/introduction/components/Socials';
+import { Technologies } from './components/Technologies';
 
 export function IntroFeature() {
   return (
@@ -32,51 +33,10 @@ export function IntroFeature() {
       </ScrollReveal>
 
       {/* 4. Canali Social */}
-      <div className="mt-6 flex flex-wrap gap-3">
-        {socials.map((social, index) => {
-          const IconComponent = social.icon;
-          return (
-            <ScrollReveal 
-              key={social.name} 
-              delay={0.4 + (index * 0.05)}
-              direction="up"
-            >
-              <a 
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.name}
-                className={`flex items-center justify-center w-11 h-11 rounded-full border border-white/10 bg-white/[0.02] text-neutral-400 transition-all duration-300 ${social.hoverColor}`}
-              >
-                <IconComponent />
-              </a>
-            </ScrollReveal>
-          );
-        })}
-      </div>
+      <Socials/>
 
       {/* 5. Tech Stack Core */}
-      <div className="mt-10 flex flex-col gap-3">
-        <ScrollReveal delay={0.6}>
-          <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">Tech Stack Principale</span>
-        </ScrollReveal>
-        
-        <div className="flex flex-wrap gap-2.5">
-          {technologies.map((tech, index) => (
-            <ScrollReveal 
-              key={tech.label} 
-              delay={0.65 + (index * 0.05)}
-              direction="up"
-            >
-              <TechBadge 
-                label={tech.label} 
-                dotColorClass={tech.dot} 
-                hoverBorderClass={tech.border} 
-              />
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
+      <Technologies/>
       
       {/* 6. Call to Actions */}
       <ScrollReveal delay={1.0}>
