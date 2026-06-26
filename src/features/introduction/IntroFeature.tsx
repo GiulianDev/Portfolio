@@ -17,7 +17,8 @@ export function IntroFeature() {
       <ScrollReveal delay={0.2}>
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mt-6 tracking-tight text-white leading-[1.1]">
           Il rigore dell'ingegneria, <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-emerald-400">
+          {/* 👇 GRADIENTE AGGIORNATO: Più viola, meno fucsia */}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-purple-500 to-fuchsia-400">
             unito alla creatività del frontend.
           </span>
         </h1>
