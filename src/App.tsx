@@ -19,7 +19,10 @@ function App() {
           }
         });
       },
-      { threshold: 0.5 } 
+      { 
+        rootMargin: '-30% 0px -50% 0px',
+        threshold: 0 
+      } 
     );
 
     const sections = document.querySelectorAll('main section[id]');
