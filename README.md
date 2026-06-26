@@ -17,6 +17,10 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 
+genera mappa
+
+- uv run generate_map.py > .continue/PROJECT_MAP.md
+
 
 # COMANTI code-review-graph
 code-review-graph install --platform continue
