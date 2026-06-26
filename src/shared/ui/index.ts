@@ -4,7 +4,7 @@ export * from './MinimalBadge';
 export * from './Navbar';
 export * from './ProjectCard';
 export * from './SectionLayout';
-export * from './TechBadge';
+export * from '../../features/introduction/components/TechBadge';
 export * from './ScrollReveal';
 export * from './BackgroundLights';
 export * from './Footer'
