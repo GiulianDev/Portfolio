@@ -17,22 +17,23 @@ export function SectionLayout({
 }: SectionLayoutProps) {
   return (
     <>
-    <style>{`
+      <style>{`
         .bg-grid-pattern {
           background-size: 50px 50px;
           background-image: 
           linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
-          .mask-y-fade {
-            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-          }
+        .mask-y-fade {
+          mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
       `}</style>
       <section 
         id={id} 
-        className={`relative w-full py-24 md:py-32 flex justify-center ${className}`}
-        >
+        /* 👇 QUI HO RIDOTTO IL PADDING DA py-24 md:py-32 A py-12 md:py-20 */
+        className={`relative w-full py-12 md:py-20 flex justify-center ${className}`}
+      >
         
         {/* ─── EFFETTO GRIGLIA CON DISSOLVENZA (Mask) ─── */}
         {hasGrid && (
