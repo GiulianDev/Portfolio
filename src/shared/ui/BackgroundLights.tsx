@@ -5,7 +5,6 @@ interface BackgroundLightsProps {
   activeSection?: 'intro' | 'github' | 'contact';
 }
 
-// Estendiamo in modo Type-Safe le proprietà CSS per supportare le variabili del keyframe (Senior Level)
 interface CustomGlowStyles extends React.CSSProperties {
   '--x-move': string;
   '--y-move': string;
@@ -18,14 +17,14 @@ const COLORS = {
   contact: 'rgba(249, 115, 22, 0.15)',
 } as const;
 
-// 1. Centralizziamo TUTTE le classi CSS strutturali e grafiche condivise
 const COMMON_LIGHT_CLASSES = 'absolute rounded-full mix-blend-screen transition-colors duration-1000';
 
-// 2. La configurazione ora contiene SOLO i valori geometrici e cinetici unici
+// Modificata la configurazione geometrica per gestire il mobile-first
 const LIGHTS_CONFIG = [
   {
     id: 'top-left',
-    layoutClass: 'top-[-20%] left-[-20%] w-[70vw] h-[60vw] blur-[150px]',
+    // Mobile: Più grande (110vw) e meno sfocato (70px) | Desktop: Torna al setup originale
+    layoutClass: 'top-[-15%] left-[-25%] w-[110vw] h-[100vw] blur-[70px] md:top-[-20%] md:left-[-20%] md:w-[70vw] md:h-[60vw] md:blur-[150px]',
     duration: '26s',
     delay: '0s',
     xMove: '14vw',
@@ -34,7 +33,8 @@ const LIGHTS_CONFIG = [
   },
   {
     id: 'mid-right',
-    layoutClass: 'top-[20%] right-[-25%] w-[55vw] h-[55vw] blur-[170px]',
+    // Mobile: Più centrato e visibile | Desktop: Riposizionato a destra
+    layoutClass: 'top-[25%] right-[-35%] w-[90vw] h-[90vw] blur-[80px] md:top-[20%] md:right-[-25%] md:w-[55vw] md:h-[55vw] md:blur-[170px]',
     duration: '32s',
     delay: '-5s',
     xMove: '-12vw',
@@ -43,7 +43,8 @@ const LIGHTS_CONFIG = [
   },
   {
     id: 'bottom-left',
-    layoutClass: 'bottom-[-20%] left-[-15%] w-[65vw] h-[65vw] blur-[160px]',
+    // Mobile: Ottimizzato per la fine del flusso dello schermo dello smartphone
+    layoutClass: 'bottom-[-15%] left-[-20%] w-[100vw] h-[100vw] blur-[75px] md:bottom-[-20%] md:left-[-15%] md:w-[65vw] h-[65vw] md:blur-[160px]',
     duration: '38s',
     delay: '-10s',
     xMove: '10vw',
@@ -61,11 +62,11 @@ export const BackgroundLights: React.FC<BackgroundLightsProps> = ({ activeSectio
         @keyframes ambient-glow {
           0% { 
             transform: translate3d(0px, 0px, 0) scale(1); 
-            opacity: 0.50; 
+            opacity: 0.55; /* Leggermente aumentata l'opacity minima per mobile */
           }
           100% { 
             transform: translate3d(var(--x-move), var(--y-move), 0) scale(var(--scale-end)); 
-            opacity: 0.70; 
+            opacity: 0.75; /* Leggermente aumentata l'opacity massima per mobile */
           }
         }
       `}</style>
@@ -77,14 +78,12 @@ export const BackgroundLights: React.FC<BackgroundLightsProps> = ({ activeSectio
         {LIGHTS_CONFIG.map((light) => (
           <div 
             key={light.id}
-            // Composizione pulita delle classi stringa senza duplicazioni
             className={`${COMMON_LIGHT_CLASSES} ${light.layoutClass}`}
             style={{ 
               backgroundColor: currentColor,
               animation: `ambient-glow ${light.duration} infinite ease-in-out alternate`,
               animationDelay: light.delay,
               willChange: 'transform, opacity',
-              // Iniettiamo le variabili CSS tipizzate correttamente tramite l'interfaccia CustomGlowStyles
               '--x-move': light.xMove,
               '--y-move': light.yMove,
               '--scale-end': light.scaleEnd
