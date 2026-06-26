@@ -9,11 +9,9 @@ export function IntroFeature() {
     <div className="w-full flex flex-col justify-center min-h-[50vh]">
       
       {/* 1. Badge di Stato */}
-      <ScrollReveal delay={0.1}>
-        <MinimalBadge variant="intro">
-          Disponibile per consulenze e mentoring
-        </MinimalBadge>
-      </ScrollReveal>
+      <MinimalBadge variant="intro">
+        Disponibile per consulenze e mentoring
+      </MinimalBadge>
 
       {/* 2. Titolo Principale */}
       <ScrollReveal delay={0.2}>

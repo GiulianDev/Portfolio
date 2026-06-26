@@ -1,4 +1,5 @@
 // src/shared/ui/MinimalBadge.tsx
+import { ScrollReveal } from '@ui';
 import React from 'react';
 
 interface MinimalBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,9 +24,11 @@ export function MinimalBadge({ variant = 'intro', children, className = '', ...p
   };
 
   return (
-    <div className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
-      <span className={`w-2 h-2 rounded-full ${dotVariants[variant]}`} />
-      <span>{children}</span>
-    </div>
+    <ScrollReveal delay={0.1}>
+      <div className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
+        <span className={`w-2 h-2 rounded-full ${dotVariants[variant]}`} />
+        <span>{children}</span>
+      </div>
+    </ScrollReveal>
   );
 }

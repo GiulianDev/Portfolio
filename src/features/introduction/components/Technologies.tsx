@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollReveal, TechBadge } from '@ui';
+import { ScrollReveal } from '@ui';
+import { TechBadge } from './TechBadge';
 
 const technologies = [
   { label: 'TypeScript', dot: 'bg-blue-500', border: 'hover:border-blue-500/50' },
