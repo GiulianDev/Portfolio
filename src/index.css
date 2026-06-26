@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-/* ─── TEMA GLOBALE (Tailwind v4) ─── */
-@theme {
-  --color-brand-bg: #04091a; 
-  --color-brand-surface: rgba(255, 255, 255, 0.02);
-  --color-brand-surface-hover: rgba(255, 255, 255, 0.04);
-  --color-brand-border: rgba(255, 255, 255, 0.08);
-  --color-brand-border-hover: rgba(99, 102, 241, 0.3); /* Un leggero indigo per gli hover */
-  --color-brand-accent: #6366f1; /* Indigo-500: il colore primario per bottoni e testi chiave */
-  --color-brand-muted: #9ca3af;  /* Neutral-400: per paragrafi e testi secondari */
-}
 
 @layer base {
   html {
@@ -27,7 +17,7 @@
 /* ─── UTILITIES VISIVE ─── */
 
 /* Griglia Tech: resa molto più subdola (bianco su nero, bassa opacità) per non distrarre */
-.bg-grid-pattern {
+/* .bg-grid-pattern {
   background-size: 50px 50px;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -37,20 +27,21 @@
 .mask-y-fade {
   mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-}
+} */
 
 /* ─── ANIMAZIONI LUCI FLUTTUANTI ─── */
 /* Variazioni di opacità e movimento minime. Un dev senior preferisce effetti ambientali calmi. */
-@keyframes electric-blob {
+/* @keyframes electric-blob {
   0% { transform: translate(0px, 0px) scale(1); opacity: 0.2; } 
   50% { transform: translate(3vw, -2vh) scale(1.03); opacity: 0.4; } 
   100% { transform: translate(0px, 0px) scale(1); opacity: 0.2; } 
 }
+*/
 
-.animate-electric {
+/* .animate-electric {
   animation: electric-blob 20s infinite alternate ease-in-out;
   will-change: transform, opacity;
-}
+} */
 
 /* ─── SCROLLBAR MINIMALE ─── */
 ::-webkit-scrollbar { width: 6px; }

@@ -30,7 +30,7 @@ export function ContactFeature() {
       
       <div className="flex flex-col">
         <ScrollReveal delay={0.1}>
-          <MinimalBadge dotClass="bg-orange-500 shadow-orange-500/50">
+          <MinimalBadge variant="contact">
             Contatti
           </MinimalBadge>
         </ScrollReveal>

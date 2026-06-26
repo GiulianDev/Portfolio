@@ -15,7 +15,7 @@ export function GithubProjectsFeature() {
        
         {/* 1. Il Badge */}
         <ScrollReveal delay={0.1}>
-          <MinimalBadge dotClass="bg-indigo-500 shadow-indigo-500/50">
+          <MinimalBadge variant="github">
             Spazio Sperimentale
           </MinimalBadge>
         </ScrollReveal>

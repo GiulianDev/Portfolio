@@ -3,17 +3,19 @@ import { Navbar, SectionLayout, BackgroundLights, Footer } from '@ui';
 import { GithubProjectsFeature } from '@features/github/GithubProjectsFeature';
 import { IntroFeature } from '@features/introduction/IntroFeature';
 import { ContactFeature } from '@features/contact/ContactFeature';
+import { SectionVariant } from './shared/types/section';
 
 function App() {
 
-  const [activeSection, setActiveSection] = useState('intro');
+  const sectionsArray: SectionVariant[] = ['intro', 'github', 'contact'];
+  const [activeSection, setActiveSection] = useState<SectionVariant>('intro');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            setActiveSection(entry.target.id as SectionVariant);
           }
         });
       },
@@ -31,7 +33,7 @@ function App() {
     <div className="relative min-h-screen bg-[#04091a] text-neutral-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">        
      
       {/* ─── LUCI FLUTTUANTI (Palette Elettrica Morbida e Attenuata) ─── */}
-      <BackgroundLights/>
+      <BackgroundLights activeSection={activeSection} />
 
       {/* ─── FLOATING NAVBAR ─── */}
       <Navbar activeSection={activeSection} />
@@ -44,11 +46,11 @@ function App() {
       {/* ─── FLUSSO DELLE SEZIONI ─── */}
       <main className="relative z-10 w-full flex flex-col items-center">
         
-        <SectionLayout id="intro" hasGrid className="min-h-screen pt-32">
+        <SectionLayout id={sectionsArray[0]} hasGrid>
           <IntroFeature />
         </SectionLayout>
         
-        <SectionLayout id="github" hasGrid>
+        <SectionLayout id={sectionsArray[1]} hasGrid>
           <GithubProjectsFeature />
         </SectionLayout>
         
@@ -56,7 +58,7 @@ function App() {
           <LinkFeature />
         </SectionLayout> */}
         
-        <SectionLayout id="contact" hasGrid>
+        <SectionLayout id={sectionsArray[2]} hasGrid>
           <ContactFeature />
         </SectionLayout>
 

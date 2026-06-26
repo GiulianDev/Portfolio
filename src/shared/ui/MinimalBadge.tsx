@@ -1,20 +1,31 @@
-import React, { ReactNode } from 'react';
+// src/shared/ui/MinimalBadge.tsx
+import React from 'react';
 
-interface MinimalBadgeProps {
-  children: ReactNode; // Permette di scrivere il testo dentro al tag
-  dotClass?: string;   // Gestisce il colore del pallino e del relativo bagliore
+interface MinimalBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'intro' | 'github' | 'contact';
+  children: React.ReactNode;
 }
 
-export function MinimalBadge({ children, dotClass = "bg-emerald-500 shadow-emerald-500/50" }: MinimalBadgeProps) {
+export function MinimalBadge({ variant = 'intro', children, className = '', ...props }: MinimalBadgeProps) {
+  const baseStyles = "inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.02] text-sm text-neutral-300 backdrop-blur-sm transition-colors duration-300";
+  
+  // Il componente contiene il proprio dizionario di stile
+  const variants = {
+    intro: "hover:border-fuchsia-500/30",
+    github: "hover:border-indigo-500/30",
+    contact: "hover:border-orange-500/30",
+  };
+
+  const dotVariants = {
+    intro: "bg-fuchsia-500 shadow-[0_0_8px_rgba(217,70,239,0.8)]",
+    github: "bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.8)]",
+    contact: "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]",
+  };
+
   return (
-    <div className="flex items-center gap-2">
-      {/* Il punto luce con animazione pulse e ombra dinamica */}
-      <span className={`w-2 h-2 rounded-full shadow-lg animate-pulse ${dotClass}`} />
-      
-      {/* Il testo passato all'interno del tag */}
-      <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">
-        {children}
-      </span>
+    <div className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
+      <span className={`w-2 h-2 rounded-full ${dotVariants[variant]}`} />
+      <span>{children}</span>
     </div>
   );
 }
