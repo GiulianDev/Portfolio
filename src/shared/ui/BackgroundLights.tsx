@@ -1,8 +1,15 @@
 // src/shared/ui/BackgroundLights.tsx
-import React, { useMemo } from 'react';
+import React from 'react';
 
 interface BackgroundLightsProps {
   activeSection?: 'intro' | 'github' | 'contact';
+}
+
+// Estendiamo in modo Type-Safe le proprietà CSS per supportare le variabili del keyframe (Senior Level)
+interface CustomGlowStyles extends React.CSSProperties {
+  '--x-move': string;
+  '--y-move': string;
+  '--scale-end': string | number;
 }
 
 const COLORS = {
@@ -11,27 +18,39 @@ const COLORS = {
   contact: 'rgba(249, 115, 22, 0.15)',
 } as const;
 
-// Configurazione molto sparsa: spostate più all'esterno e con un blur enorme (effetto aurora)
+// 1. Centralizziamo TUTTE le classi CSS strutturali e grafiche condivise
+const COMMON_LIGHT_CLASSES = 'absolute rounded-full mix-blend-screen transition-colors duration-1000';
+
+// 2. La configurazione ora contiene SOLO i valori geometrici e cinetici unici
 const LIGHTS_CONFIG = [
   {
     id: 'top-left',
-    baseClass: 'absolute top-[-20%] left-[-20%] w-[55vw] h-[55vw] rounded-full blur-[160px]',
-    duration: '28s', // Molto lenta
+    layoutClass: 'top-[-20%] left-[-20%] w-[70vw] h-[60vw] blur-[150px]',
+    duration: '26s',
     delay: '0s',
+    xMove: '14vw',
+    yMove: '10vh',
+    scaleEnd: 1.15
   },
   {
     id: 'mid-right',
-    baseClass: 'absolute top-[15%] right-[-25%] w-[50vw] h-[50vw] rounded-full blur-[180px]',
-    duration: '34s', // Velocità sfalsata per non farle incontrare al centro
-    delay: '-7s',   // Partenza asincrona
+    layoutClass: 'top-[20%] right-[-25%] w-[55vw] h-[55vw] blur-[170px]',
+    duration: '32s',
+    delay: '-5s',
+    xMove: '-12vw',
+    yMove: '-12vh',
+    scaleEnd: 1.1
   },
   {
     id: 'bottom-left',
-    baseClass: 'absolute bottom-[-20%] left-[-15%] w-[60vw] h-[60vw] rounded-full blur-[170px]',
-    duration: '40s', // Super lenta
-    delay: '-14s',
+    layoutClass: 'bottom-[-20%] left-[-15%] w-[65vw] h-[65vw] blur-[160px]',
+    duration: '38s',
+    delay: '-10s',
+    xMove: '10vw',
+    yMove: '-8vh',
+    scaleEnd: 1.2
   }
-];
+] as const;
 
 export const BackgroundLights: React.FC<BackgroundLightsProps> = ({ activeSection = 'intro' }) => {
   const currentColor = COLORS[activeSection] || COLORS.intro;
@@ -39,20 +58,18 @@ export const BackgroundLights: React.FC<BackgroundLightsProps> = ({ activeSectio
   return (
     <>
       <style>{`
-        /* Unico binario continuo da 0 a 100. Zero interpolazioni intermedie. */
         @keyframes ambient-glow {
           0% { 
             transform: translate3d(0px, 0px, 0) scale(1); 
-            opacity: 0.4; /* Livello iniziale meno acceso */
+            opacity: 0.50; 
           }
           100% { 
-            transform: translate3d(5vw, -4vh, 0) scale(1.1); 
-            opacity: 0.6; /* Livello finale leggermente meno scuro dello 0.2 originale */
+            transform: translate3d(var(--x-move), var(--y-move), 0) scale(var(--scale-end)); 
+            opacity: 0.70; 
           }
         }
       `}</style>
 
-      {/* Forziamo il layer isolato sulla GPU per l'intero macro-container */}
       <div 
         className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
         style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
@@ -60,14 +77,18 @@ export const BackgroundLights: React.FC<BackgroundLightsProps> = ({ activeSectio
         {LIGHTS_CONFIG.map((light) => (
           <div 
             key={light.id}
-            className={`${light.baseClass} mix-blend-screen transition-colors duration-1000`}
+            // Composizione pulita delle classi stringa senza duplicazioni
+            className={`${COMMON_LIGHT_CLASSES} ${light.layoutClass}`}
             style={{ 
               backgroundColor: currentColor,
-              // 'alternate' fa tornare indietro l'animazione fluidamente senza scatti
               animation: `ambient-glow ${light.duration} infinite ease-in-out alternate`,
               animationDelay: light.delay,
               willChange: 'transform, opacity',
-            }}
+              // Iniettiamo le variabili CSS tipizzate correttamente tramite l'interfaccia CustomGlowStyles
+              '--x-move': light.xMove,
+              '--y-move': light.yMove,
+              '--scale-end': light.scaleEnd
+            } as CustomGlowStyles}
           />
         ))}
       </div>
