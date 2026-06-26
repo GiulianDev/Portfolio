@@ -44,7 +44,7 @@ function App() {
       </header>
 
       {/* ─── FLUSSO DELLE SEZIONI ─── */}
-      <main id="sections-container" className="relative z-10 w-full flex flex-col items-center">
+      <main id="sections-container">
         
         <SectionLayout id={sectionsArray[0]} hasGrid>
           <IntroFeature />
